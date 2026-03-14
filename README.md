@@ -9,7 +9,7 @@ An Obsidian plugin that renders color palettes and design system documentation d
 
 ### Swatch Demo
 
-![](Swatch%20Demo.png)
+![alt text](<attachments/Swatch Demo.png>)
 
 ## Quick Start
 
