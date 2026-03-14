@@ -3,7 +3,7 @@
   "name": "Palette Renderer",
   "version": "1.0.0",
   "minAppVersion": "1.5.0",
-  "description": "Renders palette and palette-wireframe code fences as visual swatches.",
+  "description": "Renders palette-swatch and palette-wireframe code fences as visual swatches.",
   "author": "David Spell",
   "isDesktopOnly": false
 }

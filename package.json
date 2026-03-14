@@ -1,6 +1,7 @@
 {
   "name": "palette-renderer",
   "version": "1.0.0",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
     "dev": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian --watch",
     "build": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian"

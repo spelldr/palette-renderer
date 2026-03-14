@@ -4,12 +4,13 @@ An Obsidian plugin that renders color palettes and design system documentation d
 
 **Features:**
 - `palette-swatch` - Render color swatches with computed properties (contrast ratios, luminance, temperature, etc.)
-- `palette-wireframe` - Visualize complete design systems and theme configurations
-- Live settings preview - See demo renderers in settings to understand syntax quickly
+- `palette-wireframe` - Render complete design-system and theme wireframes
+- Live settings preview - Preview syntax with interactive demos
 
 ### Swatch Demo
 
-![alt text](<attachments/Swatch Demo.png>)
+![swatch example](attachments/palette-swatch.png)
+![wireframe example](attachments/palette-wireframe.png)
 
 ## Quick Start
 
@@ -19,13 +20,13 @@ Create a code fence with `palette-swatch` language:
 
 ````markdown
 ```palette-swatch
-#FF4FA8
-#3AA8FF
-#1C1D1F
+swatch-only: false
+#E84F3B
+#3A8BFF
+#2FAF66
 ```
 ````
-
-This renders three color chips. Add properties for a detailed card view:
+This renders three color chips. Add properties for a specific output:
 
 ````markdown
 ```palette-swatch
@@ -42,17 +43,15 @@ Create a code fence with `palette-wireframe` language:
 
 ````markdown
 ```palette-wireframe
-surface-base: #FFFFFF
-text-primary: #1A1A1A
-accent-primary: #1A73E8
-button-primary-background: #1A73E8
-button-primary-color: #FFFFFF
-radius-base: 6px
-space-unit: 8px
+text-secondary: #4A506A
+accent-primary: #3A7AFF
+accent-secondary: #FF4F4F
+accent-link: #1A4ACC
 ```
 ````
 
 This renders an interactive UI mockup using your design tokens.
+Any omitted properties use sensible defaults.
 
 **To see live examples:** Open **Obsidian Settings → Palette Renderer** for interactive demos of both code fence types.
 
@@ -252,7 +251,9 @@ This watches for changes and automatically rebuilds `main.js`.
 
 ## License
 
-MIT © David Spell
+PolyForm Noncommercial License 1.0.0
+
+See LICENSE.md for full terms.
 
 ## Contributing
 
