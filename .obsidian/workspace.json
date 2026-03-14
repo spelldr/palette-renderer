@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "test-wireframe.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "test-wireframe"
             }
           }
         ]
@@ -184,12 +184,16 @@
   },
   "active": "e09805d82a64edbe",
   "lastOpenFiles": [
+    "Wireframe gallery.md",
+    "test-wireframe.md",
+    "README.md",
+    "test-swatch.md",
+    "scripts/reload-plugin.cjs",
+    "scripts",
     "LICENSE.md",
     "Unconfirmed 501851.crdownload",
     "attachments/palette-wireframe.png",
     "attachments/palette-swatch.png",
-    "README.md",
-    "Wireframe gallery.md",
     "Swatch Gallery.md",
     "attachments/Swatch Demo.png",
     "attachments/Pasted image 20260314023319.png",
@@ -214,15 +218,11 @@
     "phase-01-intake/01-discovery/02-goals-constraints.md",
     "phase-01-intake/01-discovery/01-discovery-interview.md",
     "phase-01-intake/01-discovery/00-README.md",
-    "phase-01-intake/01-discovery/04-content-inventory.md",
-    "phase-01-intake/00-interest/03-initial-site-review.md",
     "phase-01-intake/02-agreement/03-contract.pdf",
     "phase-01-intake/02-agreement/agreement-packet.pdf",
     "phase-03-build-integration-review/06-review",
     "phase-03-build-integration-review/05-build",
     "phase-03-build-integration-review",
-    "phase-02-content-branding/03-brand/moodboard",
-    "phase-02-content-branding/03-brand/03-palette.txt",
-    "phase-02-content-branding/04-content"
+    "phase-02-content-branding/03-brand/moodboard"
   ]
 }

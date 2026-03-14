@@ -183,6 +183,7 @@ All properties are optional. Omitted values use sensible defaults.
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `include-swatch` | boolean | `true` | Show a color strip of all semantic colors above the wireframe |
+| `enable-tooltip` | boolean | `false` | Show token name tooltips on swatch chips and wireframe elements |
 
 Hide the color strip:
 
@@ -232,7 +233,10 @@ For development with live reloading:
 npm run dev
 ```
 
-This watches for changes and automatically rebuilds `main.js`.
+This watches for changes and rebuilds `.obsidian/plugins/palette-renderer/main.js` for live testing in Obsidian.
+
+`npm run build` now also attempts to reload the plugin via Obsidian CLI after syncing files.
+If your CLI command differs, set `OBSIDIAN_RELOAD_CMD` in your shell before running build.
 
 ## Troubleshooting
 

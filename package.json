@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
-    "dev": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian --watch",
-    "build": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian"
+    "dev": "esbuild main.ts --bundle --outfile=.obsidian/plugins/palette-renderer/main.js --format=cjs --external:obsidian --watch",
+    "build:root": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian",
+    "sync:vault": "node -e \"const fs=require('fs');const p='.obsidian/plugins/palette-renderer';fs.mkdirSync(p,{recursive:true});for(const f of ['main.js','manifest.json','styles.css'])fs.copyFileSync(f,p+'/'+f);\"",
+    "reload:plugin": "node scripts/reload-plugin.cjs",
+    "build": "npm run build:root && npm run sync:vault && npm run reload:plugin"
   },
   "devDependencies": {
     "esbuild": "^0.19.0",

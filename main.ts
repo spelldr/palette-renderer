@@ -252,6 +252,12 @@ export default class PaletteWireframePlugin extends Plugin {
     const getProp = (key: string, fallback: string): string => {
       return props[key] ?? fallback;
     };
+    const enableTooltip = getProp("enable-tooltip", "false").toLowerCase() === "true";
+
+    const setTooltip = (el: HTMLElement, label: string): void => {
+      if (!enableTooltip) return;
+      el.setAttribute("aria-label", label);
+    };
 
     // Set up CSS variables for design tokens
     const wrap = document.createElement("div");
@@ -276,21 +282,35 @@ export default class PaletteWireframePlugin extends Plugin {
     const header = document.createElement("div");
     header.className = "pwf-header";
     header.textContent = "Header";
+    setTooltip(header, "surface-raised, text-primary");
 
     const sidebar = document.createElement("div");
     sidebar.className = "pwf-sidebar";
     sidebar.textContent = "Sidebar";
+    setTooltip(sidebar, "surface-raised, text-secondary");
 
     const main = document.createElement("div");
     main.className = "pwf-main";
+    setTooltip(main, "surface-sunken");
 
     const pageTitle = document.createElement("div");
     pageTitle.className = "pwf-page-title";
     pageTitle.textContent = "Page Title";
+    setTooltip(pageTitle, "surface-raised, text-primary");
 
     const bodyText = document.createElement("div");
     bodyText.className = "pwf-body-text";
     bodyText.textContent = "Body Text";
+    setTooltip(bodyText, "surface-base, text-secondary");
+
+    const linkBreak = document.createElement("br");
+
+    const linkText = document.createElement("span");
+    linkText.className = "pwf-link";
+    linkText.textContent = "Link Text";
+    setTooltip(linkText, "accent-link");
+    bodyText.appendChild(linkBreak);
+    bodyText.appendChild(linkText);
 
     const actions = document.createElement("div");
     actions.className = "pwf-actions";
@@ -299,24 +319,50 @@ export default class PaletteWireframePlugin extends Plugin {
     primary.className = "pwf-btn pwf-btn-primary";
     primary.textContent = "Primary Action";
     primary.style.background = getProp("button-primary-background", "var(--accent-primary)");
-    primary.style.color = getProp("button-primary-color", "#FFFFFF");
+    primary.style.color = getProp("button-primary-color", "var(--text-inverse)");
+    setTooltip(primary, "button-primary-background, button-primary-color");
 
     const secondary = document.createElement("button");
     secondary.className = "pwf-btn pwf-btn-secondary";
     secondary.textContent = "Secondary Action";
     secondary.style.background = getProp("button-secondary-background", "var(--accent-secondary)");
-    secondary.style.color = getProp("button-secondary-color", "#FFFFFF");
+    secondary.style.color = getProp("button-secondary-color", "var(--text-inverse)");
+    setTooltip(secondary, "button-secondary-background, button-secondary-color");
 
     actions.appendChild(primary);
     actions.appendChild(secondary);
 
+    const accents = document.createElement("div");
+    accents.className = "pwf-accents";
+
+    const accentPrimary = document.createElement("span");
+    accentPrimary.className = "pwf-accent pwf-accent-primary";
+    accentPrimary.textContent = "A1";
+    setTooltip(accentPrimary, "accent-primary");
+
+    const accentSecondary = document.createElement("span");
+    accentSecondary.className = "pwf-accent pwf-accent-secondary";
+    accentSecondary.textContent = "A2";
+    setTooltip(accentSecondary, "accent-secondary");
+
+    accents.appendChild(accentPrimary);
+    accents.appendChild(accentSecondary);
+
+    const overlaySample = document.createElement("div");
+    overlaySample.className = "pwf-overlay-sample";
+    overlaySample.textContent = "Overlay";
+    setTooltip(overlaySample, "overlay-background, text-inverse");
+
     main.appendChild(pageTitle);
     main.appendChild(bodyText);
     main.appendChild(actions);
+    main.appendChild(accents);
+    main.appendChild(overlaySample);
 
     const footer = document.createElement("div");
     footer.className = "pwf-footer";
     footer.textContent = "Footer";
+    setTooltip(footer, "surface-sunken, text-secondary");
 
     wrap.appendChild(header);
     wrap.appendChild(sidebar);
@@ -325,24 +371,39 @@ export default class PaletteWireframePlugin extends Plugin {
 
     const includeSwatch = getProp("include-swatch", "true").toLowerCase() !== "false";
     if (includeSwatch) {
-      const swatchColors = [
-        getProp("surface-base", ""),
-        getProp("surface-raised", ""),
-        getProp("surface-sunken", ""),
-        getProp("surface-border", ""),
-        getProp("text-primary", ""),
-        getProp("text-secondary", ""),
-        getProp("accent-primary", ""),
-        getProp("accent-secondary", ""),
-        getProp("accent-link", ""),
-      ].filter(Boolean);
+      const swatchTokenNames = [
+        "surface-base",
+        "surface-raised",
+        "surface-sunken",
+        "surface-border",
+        "text-primary",
+        "text-secondary",
+        "text-inverse",
+        "accent-primary",
+        "accent-secondary",
+        "accent-link",
+        "focus-ring",
+        "button-primary-background",
+        "button-primary-color",
+        "button-secondary-background",
+        "button-secondary-color",
+        "shadow-color",
+        "overlay-background",
+      ];
+      const swatchTokens = [
+        ...swatchTokenNames.map((name) => ({
+          name,
+          color: getProp(name, ""),
+        })),
+      ].filter((token) => Boolean(token.color));
 
       const strip = document.createElement("div");
       strip.className = "pwf-color-strip";
-      for (const color of swatchColors) {
+      for (const token of swatchTokens) {
         const swatch = document.createElement("div");
         swatch.className = "pwf-color-chip";
-        swatch.style.background = color;
+        swatch.style.background = token.color;
+        setTooltip(swatch, `${token.name}: ${token.color}`);
         strip.appendChild(swatch);
       }
 
