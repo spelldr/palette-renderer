@@ -1,0 +1,21 @@
+{
+  "defaultViewMode": "preview",
+  "livePreview": false,
+  "readableLineLength": false,
+  "propertiesInDocument": "source",
+  "showLineNumber": true,
+  "spellcheck": false,
+  "openBehavior": "file:README",
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./attachments",
+  "newLinkFormat": "shortest",
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": true,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 85
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "palette-renderer",
+  "name": "Palette Renderer",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Renders palette and palette-wireframe code fences as visual swatches.",
+  "author": "David Spell",
+  "isDesktopOnly": false
+}

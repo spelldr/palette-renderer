@@ -1,0 +1,13 @@
+{
+  "name": "palette-renderer",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian --watch",
+    "build": "esbuild main.ts --bundle --outfile=main.js --format=cjs --external:obsidian"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "obsidian": "latest",
+    "typescript": "^5.0.0"
+  }
+}

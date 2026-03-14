@@ -1,0 +1,7 @@
+{
+  "cssTheme": "Red Graphite",
+  "accentColor": "#f55c5c",
+  "enabledCssSnippets": [
+    "invoice"
+  ]
+}
